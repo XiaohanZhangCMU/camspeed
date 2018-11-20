@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=md++
+#format could be dd-hh:mm:ss, hh:mm:ss, mm:ss, or mm
+#SBATCH --time=1-0:0:0
+#SBATCH --nodes=1
+#SBATCH --mem=60000
+#SBATCH -p mc 
+#SBATCH--gres gpu:1
+#SBATCH --mail-type=END,FAIL 
+#SBATCH --mail-user=xzhang11@stanford.edu
+
+#module load cuda/7.0
+
+sleep 1 
+python speed.py  --BATCH_SIZE=8 --EPOCHS=20
+wait
